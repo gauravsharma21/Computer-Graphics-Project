@@ -2,7 +2,7 @@ class Ball {
     constructor(color, pos, vel) {
         this.pos = pos;
         this.vel = vel;
-        this.radius = 25;
+        this.radius = 15;
         this.color = color;
     }
 
@@ -20,10 +20,10 @@ class Ball {
 
         // this.vel = Vector.mult(this.vel, 0.985);
 
-        if (this.pos.y + this.vel.y > canvas.height || this.pos.y + this.vel.y < 0) {
+        if (this.pos.y + this.radius > canvas.height - 40 || this.pos.y - this.radius < 40) {
             this.vel.y = -this.vel.y;
         }
-        if (this.pos.x + this.vel.x > canvas.width || this.pos.x + this.vel.x < 0) {
+        if (this.pos.x + this.radius > canvas.width - 40 || this.pos.x - this.radius < 40) {
             this.vel.x = -this.vel.x;
         }
     }
