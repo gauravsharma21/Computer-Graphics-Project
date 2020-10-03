@@ -1,8 +1,11 @@
+var friction = false;
+var accelerate = false;
+
 class Ball {
     constructor(color, pos, vel) {
         this.pos = pos;
         this.vel = vel;
-        this.radius = 15;
+        this.radius = 20;
         this.color = color;
     }
 
@@ -18,12 +21,16 @@ class Ball {
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
 
-        // this.vel = Vector.mult(this.vel, 0.985);
+        if (friction)
+            this.vel = Vector.mult(this.vel, 0.985);
 
-        if (this.pos.y + this.radius > canvas.height - 40 || this.pos.y - this.radius < 40) {
+        if (accelerate)
+            this.vel = Vector.mult(this.vel, 1.1);
+
+        if (this.pos.y + this.radius + this.vel.y > canvas.height - 40 || this.pos.y - this.radius + this.vel.y < 40) {
             this.vel.y = -this.vel.y;
         }
-        if (this.pos.x + this.radius > canvas.width - 40 || this.pos.x - this.radius < 40) {
+        if (this.pos.x + this.radius + this.vel.x > canvas.width - 40 || this.pos.x - this.radius + this.vel.x < 40) {
             this.vel.x = -this.vel.x;
         }
     }

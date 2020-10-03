@@ -1,8 +1,8 @@
 class GameWorld {
 
     constructor() {
-        this.ball = new Ball('rgb(0,0,255)', new Vector(150, 150), new Vector(5, 2));
-        this.b = new Ball('rgb(0,0,25)', new Vector(100, 100), new Vector(-2, 5));
+        this.ball = new Ball('rgb(0,0,255)', new Vector(150, 150), new Vector(20, 2));
+        this.b = new Ball('rgb(0,0,25)', new Vector(100, 100), new Vector(-2, 30));
     }
 
     draw() {
