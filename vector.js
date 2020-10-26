@@ -20,6 +20,11 @@ class Vector {
         return (v1.x * v2.x + v1.y * v2.y);
     }
 
+    static distance(v1, v2) {
+        let d = new Vector(v1.x - v2.x, v1.y - v2.y);
+        return d.mod();
+    }
+
     mod() {
         return Math.sqrt(this.x * this.x + this.y * this.y);
     }

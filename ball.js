@@ -7,9 +7,11 @@ class Ball {
         this.vel = vel;
         this.radius = 20;
         this.color = color;
+        this.visible = true;
     }
 
     draw() {
+        if (!this.visible) return;
         canvas.ctx.beginPath();
         canvas.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, true);
         canvas.ctx.closePath();
@@ -18,6 +20,7 @@ class Ball {
     }
 
     update() {
+        if (!this.visible) return;
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
 
@@ -36,6 +39,7 @@ class Ball {
     }
 
     detectCollision(b) {
+        if (!this.visible || !b.visible) return;
         let num1 = Vector.dot(Vector.subtract(this.vel, b.vel), Vector.subtract(this.pos, b.pos));
         let den1 = Vector.subtract(this.pos, b.pos).mod();
         den1 = den1 * den1;
@@ -46,6 +50,7 @@ class Ball {
 
         this.vel = Vector.subtract(this.vel, Vector.mult(Vector.subtract(this.pos, b.pos), num1 / den1));
         b.vel = Vector.subtract(b.vel, Vector.mult(Vector.subtract(b.pos, this.pos), num2 / den2));
-
     }
+
+
 }
