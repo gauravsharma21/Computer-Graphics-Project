@@ -41,6 +41,12 @@ class GameWorld {
     }
 
     draw() {
+        let game_score = 0;
+        for (let i = 0; i < 16; i++) {
+            if (this.balls[i].visible == false) game_score++;
+        }
+
+        document.getElementById("score").innerHTML = "Score:" + game_score;
 
         for (let i = 0; i < 16; i++) {
             for (let j = i + 1; j < 16; j++) {
