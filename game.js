@@ -19,5 +19,4 @@ class Game {
 }
 
 let PoolGame = new Game();
-var game_score = 0;
 PoolGame.start();

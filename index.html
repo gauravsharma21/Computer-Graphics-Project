@@ -8,36 +8,17 @@
 </head>
 
 <body>
-    <p style="font-family: Arial; font-size: 50px; font-weight: bold; text-align: center;">POOL GAME</p>
-    <div>
-        <button style="background-color: #d2d4d6; padding: 20px; border: none; border-radius: 10px; font-size: 18px; font-family: Arial, Helvetica, sans-serif;" id="friction">Toggle friction</button>
-        <br><br>
-        <button style="background-color: #d2d4d6; padding: 20px; border: none; border-radius: 10px; font-size: 18px; font-family: Arial, Helvetica, sans-serif;" id="accelerate">Accelerate</button>
-    </div>
     <h1 id="score" style="font-family: Arial">Score: 0</h1>
-    <canvas id="myCanvas" width="900" height="550" style="border: solid 2px; background-color: #750a02; position: relative; left: 400px;;"></canvas>
+    <canvas id="myCanvas" width="900" height="550" style="border: solid 2px; background-color: #750a02; margin: 0; position:relative; left:200px;"></canvas>
 
     <script src="Canvas.js"></script>
     <script src="vector.js"></script>
+    <script src="ButtonState.js"></script>
+    <script src="mouse.js"></script>
     <script src="GameWorld.js"></script>
     <script src="ball.js"></script>
+    <script src="stick.js"></script>
     <script src="game.js"></script>
-    <script>
-        let button1 = document.getElementById("friction");
-        let button2 = document.getElementById("accelerate");
-
-        button1.addEventListener("click", () => {
-            friction = !friction;
-        })
-
-        button2.addEventListener("mousedown", () => {
-            accelerate = true;
-        })
-
-        button2.addEventListener("mouseup", () => {
-            accelerate = false;
-        })
-    </script>
 
 </body>
 

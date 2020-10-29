@@ -1,5 +1,4 @@
-var friction = false;
-var accelerate = false;
+var friction = true;
 
 class Ball {
     constructor(color, pos, vel) {
@@ -27,9 +26,6 @@ class Ball {
         if (friction)
             this.vel = Vector.mult(this.vel, 0.985);
 
-        if (accelerate)
-            this.vel = Vector.mult(this.vel, 1.1);
-
         if (this.pos.y + this.radius + this.vel.y > canvas.height - 40 || this.pos.y - this.radius + this.vel.y < 40) {
             this.vel.y = -this.vel.y;
         }
@@ -52,5 +48,10 @@ class Ball {
         b.vel = Vector.subtract(b.vel, Vector.mult(Vector.subtract(b.pos, this.pos), num2 / den2));
     }
 
+    shoot(power, rotation) {
+        let powerv = new Vector(-1 * Math.cos(rotation), -1 * Math.sin(rotation));
+        powerv = Vector.mult(powerv, power / 100);
+        this.vel = Vector.add(this.vel, powerv);
+    }
 
 }

@@ -5,6 +5,9 @@ class GameWorld {
         this.balls = [];
         let pockets = this.pockets;
         let balls = this.balls;
+        this.whiteball = new Ball('white', new Vector(100, 420), new Vector(0, 0));
+        this.stick = new Stick(new Vector(this.whiteball.pos.x, this.whiteball.pos.y), this.whiteball.shoot.bind(this.whiteball));
+
         pockets.push(new Vector(40, 40));
         pockets.push(new Vector(canvas.width / 2, 40));
         pockets.push(new Vector(canvas.width - 40, 40));
@@ -28,8 +31,7 @@ class GameWorld {
         balls.push(new Ball('red', new Vector(350, 380), new Vector(0, 0)));
 
         balls.push(new Ball('black', new Vector(380, 420), new Vector(0, 0)));
-        balls.push(new Ball('white', new Vector(100, 420), new Vector(30, 20)));
-
+        balls.push(this.whiteball);
     }
 
     drawSockets(pos) {
@@ -43,7 +45,12 @@ class GameWorld {
     draw() {
         let game_score = 0;
         for (let i = 0; i < 16; i++) {
-            if (this.balls[i].visible == false) game_score++;
+            if (this.balls[i].visible == false) {
+                if (this.balls[i].color == 'yellow') game_score += 10;
+                else if (this.balls[i].color == 'red') game_score += 20;
+                else if (this.balls[i].color == 'black') game_score += 50;
+                else game_score -= 10;
+            }
         }
 
         document.getElementById("score").innerHTML = "Score:" + game_score;
@@ -74,6 +81,8 @@ class GameWorld {
             })
         })
 
+        this.stick.draw();
+
     }
 
     update() {
@@ -81,5 +90,6 @@ class GameWorld {
             ball.update();
             ball.draw();
         })
+        this.stick.update();
     }
 }
