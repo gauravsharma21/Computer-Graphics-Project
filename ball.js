@@ -7,6 +7,7 @@ class Ball {
         this.radius = 20;
         this.color = color;
         this.visible = true;
+        this.moving = true;
     }
 
     draw() {
@@ -20,6 +21,13 @@ class Ball {
 
     update() {
         if (!this.visible) return;
+
+        if (this.vel.mod() < 0.1) {
+            this.vel = new Vector(0, 0);
+            this.moving = false;
+        } else {
+            this.moving = true;
+        }
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
 

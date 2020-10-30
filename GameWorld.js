@@ -7,6 +7,7 @@ class GameWorld {
         let balls = this.balls;
         this.whiteball = new Ball('white', new Vector(100, 420), new Vector(0, 0));
         this.stick = new Stick(new Vector(this.whiteball.pos.x, this.whiteball.pos.y), this.whiteball.shoot.bind(this.whiteball));
+        this.done = false;
 
         pockets.push(new Vector(40, 40));
         pockets.push(new Vector(canvas.width / 2, 40));
@@ -61,6 +62,22 @@ class GameWorld {
                     this.balls[i].detectCollision(this.balls[j]);
                 }
             }
+        }
+
+        let moving = false;
+
+        for (let i = 0; i < 16; i++) {
+            if (this.balls[i].moving) {
+                moving = true;
+                break;
+            }
+        }
+
+        if (!moving) {
+            this.stick.lock = false;
+            this.stick.reposition(new Vector(this.whiteball.pos.x, this.whiteball.pos.y));
+        } else {
+            this.stick.lock = true;
         }
 
         canvas.ctx.fillStyle = '#19e044';

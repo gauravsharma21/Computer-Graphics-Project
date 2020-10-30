@@ -5,6 +5,7 @@ class Stick {
         this.rotation = 0;
         this.power = 0;
         this.onShoot = onShoot;
+        this.lock = false;
     }
 
     draw() {
@@ -18,6 +19,7 @@ class Stick {
     }
 
     update() {
+        if (this.lock) return;
         let num = mouse._position.y - this.origin.y;
         let den = mouse._position.x - this.origin.x;
         this.rotation = Math.atan2(num, den);
@@ -32,5 +34,9 @@ class Stick {
             this.pos = new Vector(0, 0);
             this.power = 0;
         }
+    }
+
+    reposition(pos) {
+        this.origin = pos;
     }
 }
