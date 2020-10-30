@@ -9,6 +9,7 @@ class Stick {
     }
 
     draw() {
+        if (this.lock) return;
         canvas.ctx.save();
         canvas.ctx.fillStyle = "brown";
         canvas.ctx.translate(this.origin.x, this.origin.y);

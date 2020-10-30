@@ -11,7 +11,10 @@ class Ball {
     }
 
     draw() {
-        if (!this.visible) return;
+        if (!this.visible) {
+            this.moving = false;
+            return;
+        }
         canvas.ctx.beginPath();
         canvas.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, true);
         canvas.ctx.closePath();
@@ -20,7 +23,10 @@ class Ball {
     }
 
     update() {
-        if (!this.visible) return;
+        if (!this.visible) {
+            this.moving = false;
+            return;
+        }
 
         if (this.vel.mod() < 0.1) {
             this.vel = new Vector(0, 0);
@@ -62,4 +68,10 @@ class Ball {
         this.vel = Vector.add(this.vel, powerv);
     }
 
+    respawn() {
+        this.pos = new Vector(100, 100);
+        this.vel = new Vector(0, 0);
+        this.moving = false;
+        this.visible = true;
+    }
 }

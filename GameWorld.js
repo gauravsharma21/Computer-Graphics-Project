@@ -31,7 +31,7 @@ class GameWorld {
         balls.push(new Ball('red', new Vector(310, 340), new Vector(0, 0)));
         balls.push(new Ball('red', new Vector(350, 380), new Vector(0, 0)));
 
-        balls.push(new Ball('black', new Vector(380, 420), new Vector(0, 0)));
+        balls.push(new Ball('black', new Vector(400, 420), new Vector(0, 0)));
         balls.push(this.whiteball);
     }
 
@@ -50,7 +50,10 @@ class GameWorld {
                 if (this.balls[i].color == 'yellow') game_score += 10;
                 else if (this.balls[i].color == 'red') game_score += 20;
                 else if (this.balls[i].color == 'black') game_score += 50;
-                else game_score -= 10;
+                else {
+                    game_score -= 10;
+                    this.whiteball.respawn();
+                }
             }
         }
 
