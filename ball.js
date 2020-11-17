@@ -15,11 +15,14 @@ class Ball {
             this.moving = false;
             return;
         }
+        var grd = canvas.ctx.createRadialGradient(this.pos.x, this.pos.y, 8, this.pos.x, this.pos.y, 30);
+        grd.addColorStop(0, this.color);
+        grd.addColorStop(1, "black");
 
         canvas.ctx.beginPath();
         canvas.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, true);
         canvas.ctx.closePath();
-        canvas.ctx.fillStyle = this.color;
+        canvas.ctx.fillStyle = grd;
         canvas.ctx.fill();
     }
 
