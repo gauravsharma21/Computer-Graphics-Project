@@ -51,7 +51,7 @@ class GameWorld {
             if (this.balls[i].visible == false) {
                 if (this.balls[i].color == 'yellow') game_score += 10;
                 else if (this.balls[i].color == 'red') game_score += 20;
-                else if (this.balls[i].color == 'black') game_score += 50;
+                else if (this.balls[i].color == '#211c1c') game_score += 50;
                 else {
                     this.penalties++;
                     this.whiteball.respawn();
@@ -62,7 +62,7 @@ class GameWorld {
         for (let i = 0; i < 15; i++) {
             if (this.balls[i].visible === true) {
                 this.gameover = false;
-            } else if (this.balls[i].visible === false && this.balls[i].color === "black") {
+            } else if (this.balls[i].visible === false && this.balls[i].color === "#211c1c") {
                 this.gameover = true;
             }
         }
@@ -70,8 +70,12 @@ class GameWorld {
         if (this.gameover === true) {
             canvas.clear()
             canvas.ctx.font = "80px Arial";
+            canvas.ctx.fillStyle = "white"
             canvas.ctx.fillText("GAME OVER", 320, 340);
+            document.getElementById("button").style.display = "block";
             return;
+        } else {
+            document.getElementById("button").style.display = "none";
         }
 
         game_score -= 10 * this.penalties;

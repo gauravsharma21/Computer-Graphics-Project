@@ -27,6 +27,7 @@
     </script>
     <div id="canvas">
         <canvas id="myCanvas" width="1100" height="625"></canvas>
+        <img id="button" src="play.png">
     </div>
     <div id="score">SCORE: 0 &nbsp; &nbsp; &nbsp; MOVES: 0</div>
     <script src="Canvas.js"></script>
@@ -37,6 +38,15 @@
     <script src="ball.js"></script>
     <script src="stick.js"></script>
     <script src="game.js"></script>
+
+    <script>
+        document.getElementById("button").addEventListener("click", () => {
+            canvas.clear()
+            moves = 0;
+            PoolGame = new Game();
+            PoolGame.start()
+        })
+    </script>
 
 </body>
 

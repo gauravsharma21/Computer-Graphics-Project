@@ -27,3 +27,17 @@ body {
     font-weight: bold;
     padding: 15px;
 }
+
+#button {
+    position: absolute;
+    display: none;
+    bottom: 35%;
+    height: 10%;
+    left: 48%;
+    transition: 0.1s;
+}
+
+#button:hover {
+    height: 15%;
+    left: 47%;
+}
