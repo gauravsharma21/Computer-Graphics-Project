@@ -33,7 +33,7 @@ class GameWorld {
         balls.push(new Ball('red', new Vector(620, 310), new Vector(0, 0)));
         balls.push(new Ball('yellow', new Vector(655, 290), new Vector(0, 0)));
 
-        balls.push(new Ball('black', new Vector(655, 330), new Vector(0, 0)));
+        balls.push(new Ball('#211c1c', new Vector(655, 330), new Vector(0, 0)));
         balls.push(this.whiteball);
     }
 
