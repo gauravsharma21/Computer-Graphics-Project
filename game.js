@@ -18,5 +18,6 @@ class Game {
 
 }
 
+var moves = 0;
 let PoolGame = new Game();
 PoolGame.start();
