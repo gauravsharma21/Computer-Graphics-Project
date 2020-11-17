@@ -63,6 +63,7 @@ class GameWorld {
             if (this.balls[i].visible === true) {
                 this.gameover = false;
             } else if (this.balls[i].visible === false && this.balls[i].color === "#211c1c") {
+                game_score -= 50;
                 this.gameover = true;
             }
         }
