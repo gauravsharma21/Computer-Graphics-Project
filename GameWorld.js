@@ -7,7 +7,7 @@ class GameWorld {
         let balls = this.balls;
         this.gameover = false;
         this.penalties = 0;
-        this.whiteball = new Ball('white', new Vector(305, 310), new Vector(0, 0));
+        this.whiteball = new Ball('white', new Vector(307, 310), new Vector(0, 0));
         this.stick = new Stick(new Vector(this.whiteball.pos.x, this.whiteball.pos.y), this.whiteball.shoot.bind(this.whiteball));
         this.done = false;
 
@@ -58,15 +58,23 @@ class GameWorld {
                 }
             }
         }
-        this.gameover = true;
+        let count = 0;
+
         for (let i = 0; i < 15; i++) {
-            if (this.balls[i].visible === true) {
-                this.gameover = false;
-            } else if (this.balls[i].visible === false && this.balls[i].color === "#211c1c") {
-                game_score -= 50;
+            if (this.balls[i].visible === true) count++;
+        }
+
+        if (count === 0) {
+            this.gameover = true;
+        } else {
+            if (this.balls[14].visible == false) {
                 this.gameover = true;
+                game_score -= 50;
             }
         }
+
+        game_score -= 10 * this.penalties;
+        document.getElementById("score").innerHTML = "SCORE: " + game_score + "&nbsp; &nbsp; &nbsp;MOVES: " + moves;
 
         if (this.gameover === true) {
             canvas.clear()
@@ -78,10 +86,6 @@ class GameWorld {
         } else {
             document.getElementById("button").style.display = "none";
         }
-
-        game_score -= 10 * this.penalties;
-
-        document.getElementById("score").innerHTML = "SCORE: " + game_score + "&nbsp; &nbsp; &nbsp;MOVES: " + moves;
 
         for (let i = 0; i < 16; i++) {
             for (let j = i + 1; j < 16; j++) {

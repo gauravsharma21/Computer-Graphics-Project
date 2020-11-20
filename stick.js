@@ -22,6 +22,10 @@ class Stick {
         canvas.ctx.arc(-1 * this.pos.x - 400, 0, 8, Math.PI / 2, -Math.PI / 2);
         canvas.ctx.lineTo(-1 * this.pos.x - 400, -8)
         canvas.ctx.lineTo(-1 * this.pos.x - 25, -4);
+        canvas.ctx.closePath()
+        canvas.ctx.fill();
+        canvas.ctx.beginPath()
+        canvas.ctx.fillStyle = "white";
         canvas.ctx.arc(-1 * this.pos.x - 25, 0, 4, Math.PI / 2, -Math.PI / 2, true);
         canvas.ctx.closePath()
         canvas.ctx.fill();

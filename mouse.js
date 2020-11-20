@@ -12,7 +12,7 @@ class MouseHandler {
         this._position = new Vector(0, 0);
 
         document.onmousemove = handleMouseMove;
-        document.onmousedown = (evt) => {
+        document.getElementById("myCanvas").onmousedown = (evt) => {
             handleMouseMove(evt);
             if (evt.which === 1) {
                 if (!this._left.down)
