@@ -6,6 +6,7 @@ class GameWorld {
         let pockets = this.pockets;
         let balls = this.balls;
         this.gameover = false;
+        this.sound = new sound("score.wav")
         this.penalties = 0;
         this.whiteball = new Ball('white', new Vector(307, 310), new Vector(0, 0));
         this.stick = new Stick(new Vector(this.whiteball.pos.x, this.whiteball.pos.y), this.whiteball.shoot.bind(this.whiteball));
@@ -123,7 +124,8 @@ class GameWorld {
 
         this.pockets.forEach((pocket) => {
             this.balls.forEach((ball) => {
-                if (Vector.distance(ball.pos, pocket) <= 45) {
+                if (ball.visible === true && Vector.distance(ball.pos, pocket) <= 45) {
+                    this.sound.play()
                     ball.visible = false;
                 }
             })
